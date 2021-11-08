@@ -1,26 +1,36 @@
 extends TextEdit
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
+func command(cmd):
+	if cmd == "help":
+		write("\nThis is a help line.")
+	else:
+		write("\nCommand not found.")
+
+var PS1 = "$ "
 func _input(event):
-	if(event.as_text()=="Enter"):
-		readonly=true
-		write("$ ")
-		readonly=false
+	if not visible:
+		return
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_ENTER:
+			if (get_line(cursor_get_line()).length() > PS1.length()):
+				command(get_line(cursor_get_line()).trim_prefix(PS1))
+			write("\n")
+			write(PS1)
+			get_tree().set_input_as_handled()
+		if event.pressed and event.scancode == KEY_BACKSPACE:
+			if (get_line(cursor_get_line()).length() <= PS1.length()):
+				get_tree().set_input_as_handled() #don't go further back then PS1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	text=""
+	write(PS1)
 	pass # Replace with function body.
 
 func write(s):
-	var c = cursor_get_column()
-	var l = cursor_get_line()
-	text+=s
-	cursor_set_column(c+s.length())
-	cursor_set_line(l+1)
+	insert_text_at_cursor(s)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
