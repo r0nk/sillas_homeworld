@@ -4,6 +4,9 @@ extends TextEdit
 func command(cmd):
 	if cmd == "help":
 		write("\nThis is a help line.")
+	elif cmd == "exit":
+		write("\nlogout")
+		get_node("../../").logout();
 	else:
 		write("\nCommand not found.")
 

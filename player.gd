@@ -7,7 +7,7 @@ var health = 100
 #probably a better way of doing this but yolo lmao
 var is_player = true
 var dead = false
-var scrap = 0
+var move_locked = false
 
 var jumps=0
 var extra_jumps=1
@@ -22,9 +22,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$camera/HUD/crosshair.rect_position = get_viewport().size/2
 
-
 func _input(event):
-	if event is InputEventMouseMotion:
+	if (event is InputEventMouseMotion) and not move_locked:
 		$camera.rotation_degrees.x=clamp($camera.rotation_degrees.x-event.relative.y*0.2,-90,90)
 		$camera.rotation_degrees.y-=event.relative.x*0.2
 
@@ -36,17 +35,14 @@ func process_interactibles():
 		var body = $camera/interact_cast.get_collider()
 		if body.is_in_group("interactibles"):
 			$camera/HUD/undercross.text="Press [G] to Interact."
-			if body.get("cost") and body.cost > 0:
-				$camera/HUD/undercross.text="Pay $" + str(body.cost) + " to interact."
-				if body.cost > scrap:
-					$camera/HUD/undercross.text="Not enough scrap, it costs $" + str(body.cost)
 			if Input.is_action_pressed("interact"):
 				body.interact(get_node("."))
 	else:
 		$camera/HUD/undercross.text=""
 
 func process_input(delta):
-
+	if(move_locked):
+		return
 	process_interactibles()
 	input_direction = Vector3()
 
@@ -58,7 +54,6 @@ func process_input(delta):
 		input_direction.x-=1
 	if Input.is_action_pressed("movement_right"):
 		input_direction.x+=1
-
 
 	if is_on_floor():
 		jumps=extra_jumps
