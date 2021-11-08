@@ -20,7 +20,8 @@ signal player_killed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#if not $camera/gun.gun_already_visible():
+	$camera/HUD/crosshair.rect_position = get_viewport().size/2
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -66,30 +67,18 @@ func process_input(delta):
 		if not is_on_floor():
 			$jump_sfx.play()
 		gravity_vector=Vector3(0,10,0)
-	input_direction = 20*input_direction.normalized().rotated(Vector3.UP,$camera.rotation.y)
-
-
-func update_power(delta):
-	power = 0
-	var speed = abs((input_direction+velocity+gravity_vector).length()-10)
-	power += demon*speed
-	power += juke_power
-	juke_power=clamp(juke_power-delta,0,100)
-	$power_light.light_energy=power/4
-
+	input_direction = 10*input_direction.normalized().rotated(Vector3.UP,$camera.rotation.y)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dead:
 		return
 	process_input(delta)
-	move_and_slide(input_direction+velocity+gravity_vector,Vector3.UP)
+#	move_and_slide(input_direction+velocity+gravity_vector,Vector3.UP)
+	move_and_slide(input_direction+velocity,Vector3.UP)
 	if is_on_floor():
 		gravity_vector=-get_floor_normal()*10
 		velocity*=1-(delta)
 	else:
 		gravity_vector.y-=delta*20
 		velocity*=1-(delta*0.5)
-	if(translation.y<-4):
-		hurt(100)
-	update_power(delta)
