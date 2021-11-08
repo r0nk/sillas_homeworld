@@ -1,0 +1,67 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello world!\n"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Why are you the way that you are"
+		},
+		{
+			"choice": "banana",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "banana? what?"
+		},
+		{
+			"choice": "Tuesday",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Dude its monday"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1636399137.json",
+		"name": "a"
+	}
+}

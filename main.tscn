@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://terminal.gd" type="Script" id=1]
 [ext_resource path="res://theme.tres" type="Theme" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://computer.gd" type="Script" id=4]
+[ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -46,3 +47,6 @@ shape = SubResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18554, 0, 0 )
+
+[node name="Dialog" parent="." instance=ExtResource( 5 )]
+timeline = "timeline-1636399137.json"
