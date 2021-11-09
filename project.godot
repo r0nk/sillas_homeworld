@@ -58,6 +58,7 @@ config/icon="res://icon.png"
 
 window/size/width=2560
 window/size/height=1440
+window/size/fullscreen=true
 
 [editor_plugins]
 
