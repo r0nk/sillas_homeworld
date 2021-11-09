@@ -1,0 +1,30 @@
+* computer terminal
+| * standard utilities
+| * two different challenges
+* sprites
+| * silla
+| * soldier
+* models
+| * computer terminal
+| * turret
+| * door
+| * servers
+* music 
+| * chase
+| * chill
+* dialogues
+| * silla 
+| | * run sequence
+| | * turrets
+| | * server room
+| | | * win
+| | | * fail
+* sfx
+| * bullet firing
+| * talking noise
+| * foot steps
+* map
+| * textures
+| * design
+| * 3d model
+| * city design
