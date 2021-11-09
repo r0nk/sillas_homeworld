@@ -61,7 +61,7 @@ func process_input(delta):
 		jumps-=1
 		if not is_on_floor():
 			$jump_sfx.play()
-		gravity_vector=Vector3(0,10,0)
+		gravity_vector=Vector3(0,7,0)
 	input_direction = 10*input_direction.normalized().rotated(Vector3.UP,$camera.rotation.y)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,8 +69,8 @@ func _process(delta):
 	if dead:
 		return
 	process_input(delta)
-#	move_and_slide(input_direction+velocity+gravity_vector,Vector3.UP)
-	move_and_slide(input_direction+velocity,Vector3.UP)
+	move_and_slide(input_direction+velocity+gravity_vector,Vector3.UP)
+#	move_and_slide(input_direction+velocity,Vector3.UP)
 	if is_on_floor():
 		gravity_vector=-get_floor_normal()*10
 		velocity*=1-(delta)
