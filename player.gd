@@ -64,6 +64,10 @@ func process_input(delta):
 		gravity_vector=Vector3(0,7,0)
 	input_direction = 10*input_direction.normalized().rotated(Vector3.UP,$camera.rotation.y)
 
+func dialogic_event_handler(e):
+	if e == "unlock_player":
+		move_locked=false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dead:
