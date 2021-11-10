@@ -67,11 +67,6 @@ __meta__ = {
 enabled = true
 cast_to = Vector3( 0, 0, -4 )
 
-[node name="power_light" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 2, 0 )
-light_color = Color( 1, 0.913725, 0, 1 )
-spot_range = 6.0
-
 [node name="cs" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.824289, 0 )
 shape = SubResource( 3 )
