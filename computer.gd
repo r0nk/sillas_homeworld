@@ -9,9 +9,11 @@ var user
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ambience.play()
 	pass # Replace with function body.
 
 func interact(p):
+	$logon_sfx.play()
 	user=p
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$vp/terminal.visible=true
@@ -20,6 +22,7 @@ func interact(p):
 
 
 func logout():
+	$logoff_sfx.play()
 	if not user:
 		print("logout called with no user at terminal");
 		return

@@ -1,13 +1,21 @@
 extends TextEdit
 
+signal set_turret_status(active)
 
 func command(cmd):
 	if cmd == "help":
 		write("\nThis is a help line.")
+	elif cmd == "activate":
+		emit_signal("set_turret_status",true)
+		write("\nactivating turrets...")
+	elif cmd == "deactivate":
+		emit_signal("set_turret_status",false)
+		write("\ndeactivating turrets...")
 	elif cmd == "exit":
 		write("\nlogout")
 		get_node("../../").logout();
 	else:
+		$error_sfx.play()
 		write("\nCommand not found.")
 
 var PS1 = "$ "
