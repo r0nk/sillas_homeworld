@@ -193,7 +193,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -1658, -497 )
+graph_offset = Vector2( -1179.24, -225 )
 modes/cull = 2
 modes/depth_draw = 1
 flags/ambient_light_disabled = true

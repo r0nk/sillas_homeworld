@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/dev_grey.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Silla.gd" type="Script" id=8]
 [ext_resource path="res://turret.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main.gd" type="Script" id=10]
+[ext_resource path="res://textures/png/TECH_1A.png" type="Texture" id=11]
 [ext_resource path="res://elevator.gd" type="Script" id=15]
 [ext_resource path="res://Black Hole.tscn" type="PackedScene" id=16]
 [ext_resource path="res://door.gd" type="Script" id=17]
@@ -274,6 +275,14 @@ nodes/fragment/connections = PoolIntArray( 5, 0, 4, 0, 2, 0, 4, 1, 20, 0, 13, 0,
 resource_local_to_scene = true
 shader = SubResource( 32 )
 
+[sub_resource type="SpatialMaterial" id=43]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 2 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=44]
+albedo_texture = ExtResource( 11 )
+
 [sub_resource type="SpatialMaterial" id=41]
 flags_world_triplanar = true
 albedo_texture = ExtResource( 4 )
@@ -286,9 +295,6 @@ uv1_triplanar = true
 
 [sub_resource type="ViewportTexture" id=42]
 viewport_path = NodePath("map/blocks/Sprite3D/Viewport")
-
-[sub_resource type="ViewportTexture" id=43]
-viewport_path = NodePath("map/blocks/Sprite3D2/Viewport")
 
 [sub_resource type="BoxShape" id=34]
 extents = Vector3( 1.91293, 1, 1.37556 )
@@ -309,13 +315,14 @@ noise = SubResource( 36 )
 panorama = SubResource( 37 )
 
 [sub_resource type="Environment" id=39]
-background_mode = 2
+background_mode = 1
 background_sky = SubResource( 38 )
+background_color = Color( 0.615686, 0.615686, 0.615686, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.1
 ambient_light_sky_contribution = 0.05
 fog_enabled = true
-fog_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+fog_color = Color( 0.615686, 0.615686, 0.615686, 1 )
 fog_sun_color = Color( 0, 0, 0, 1 )
 fog_depth_begin = 1.0
 fog_depth_end = 1000.0
@@ -352,7 +359,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71797, -0.314429, -14.467 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.3725, 32.9601, -3.75569 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -86.7795, 36.7299, -15.5526 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0367, 3.94444, 0.403055 )
 
 [node name="map" type="Spatial" parent="."]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 3.91314, 4.27578 )
@@ -386,8 +393,31 @@ light_energy = 0.5
 omni_range = 14.6571
 
 [node name="Black Hole" parent="map" instance=ExtResource( 16 )]
-transform = Transform( -2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 25.8493, 0, 0 )
+transform = Transform( -2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 29.9305, 0, 0 )
 material = SubResource( 33 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="map"]
+transform = Transform( -2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 30.0373, 0, 0 )
+use_collision = true
+radius = 6.05
+radial_segments = 60
+rings = 10
+material = SubResource( 43 )
+
+[node name="CSGSphere" type="CSGSphere" parent="map/CSGSphere2"]
+transform = Transform( 1, 0, 1.77636e-14, 0, 1, 0, -1.77636e-14, 0, 1, 0, 0, 0 )
+operation = 2
+radius = 6.0
+radial_segments = 60
+rings = 10
+material = SubResource( 43 )
+
+[node name="CSGBox" type="CSGBox" parent="map/CSGSphere2/CSGSphere"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0, -5.9758 )
+width = 0.498418
+height = 0.503007
+depth = 0.347099
+material = SubResource( 44 )
 
 [node name="blocks" type="Spatial" parent="map"]
 
@@ -440,6 +470,15 @@ height = 48.8556
 depth = 0.352584
 material = SubResource( 41 )
 
+[node name="CSGBox13" type="CSGBox" parent="map/blocks"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2485, -39.6813, -5.98527 )
+snap = 0.02
+use_collision = true
+width = 12.9749
+height = 7.88089
+depth = 0.352584
+material = SubResource( 41 )
+
 [node name="CSGBox10" type="CSGBox" parent="map/blocks"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8244, 5.25146, -1.62019 )
 use_collision = true
@@ -487,6 +526,14 @@ height = 0.329563
 depth = 18.1097
 material = SubResource( 40 )
 
+[node name="CSGBox14" type="CSGBox" parent="map/blocks"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -27.8519, -45.4099, 3.98518 )
+use_collision = true
+width = 0.993382
+height = 0.329563
+depth = 18.1097
+material = SubResource( 40 )
+
 [node name="Sprite3D" type="Sprite3D" parent="map/blocks"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6933, -43.7716, -14.8091 )
 flip_v = true
@@ -502,22 +549,6 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "CARS AND 
 STUFF here"
-autowrap = true
-
-[node name="Sprite3D2" type="Sprite3D" parent="map/blocks"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.445, -43.7716, -3.7287 )
-flip_v = true
-billboard = 2
-texture = SubResource( 43 )
-
-[node name="Viewport" type="Viewport" parent="map/blocks/Sprite3D2"]
-size = Vector2( 60, 60 )
-own_world = true
-
-[node name="Label" type="Label" parent="map/blocks/Sprite3D2/Viewport"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "secret tunnel down"
 autowrap = true
 
 [node name="city" parent="map/blocks" instance=ExtResource( 6 )]
