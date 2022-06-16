@@ -1,0 +1,12 @@
+/system/ - system information, hostname etc
+/me/ - this program info
+ - pwd
+ - last_pid
+/process/ - process memory and information
+/programs/ - all the programs for the game
+/home/ - users files
+/devices/ -
+/net/ - files connected to other computers by the net program
+
+users list directories by reading the path
+start programs by copying them to process

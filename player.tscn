@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://sfx/S23_SFX_Footsteps_Metal_Boots_Loop_Jogging.wav" type="AudioStream" id=2]
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -13,20 +14,19 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.490116
+height = 1.98087
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 1, 0.0352941, 0.0352941, 1 )
 
-[node name="player" type="KinematicBody" groups=[
-"player",
-]]
+[node name="player" type="KinematicBody" groups=["player"]]
 script = ExtResource( 1 )
 
 [node name="camera" type="Camera" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.53674e-07, 0, 5.96046e-08 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.53674e-07, 0.690334, 5.96046e-08 )
 cull_mask = 2148532223
 fov = 90.0
-far = 500.0
+far = 10000.0
 
 [node name="HUD" type="CanvasLayer" parent="camera"]
 
@@ -35,8 +35,8 @@ margin_left = 951.591
 margin_top = 508.887
 margin_right = 987.591
 margin_bottom = 573.887
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 0.207843 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "x"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,8 +47,8 @@ margin_left = 6.0
 margin_top = 158.0
 margin_right = 932.0
 margin_bottom = 678.0
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 0.392157 )
+custom_fonts/normal_font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,9 +68,13 @@ enabled = true
 cast_to = Vector3( 0, 0, -4 )
 
 [node name="cs" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.824289, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.27144, 0 )
 shape = SubResource( 3 )
 
 [node name="CSGPolygon" type="CSGPolygon" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, -0.276719, -1.79276, 0.236389 )
 material = SubResource( 4 )
+
+[node name="footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0

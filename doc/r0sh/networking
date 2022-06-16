@@ -5,7 +5,7 @@ the player can only read or write directly to the /dev/other_computer file.
 The internet is done by routing and setup of the net executable file.
 
 the internet in this world is called Ænet
- 
+
 Ænet addresses are a.b.c.d.e.f.g.h, 8 ascii characters long
 	Æabcdefgh
 	Æ0000home

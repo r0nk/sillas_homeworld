@@ -55,12 +55,18 @@ func process_input(delta):
 	if Input.is_action_pressed("movement_right"):
 		input_direction.x+=1
 
+	if(input_direction.length() > 0) and is_on_floor():
+		if not $footsteps.playing:
+			$footsteps.play()
+	else:
+		$footsteps.stop()
+
 	if is_on_floor():
 		jumps=extra_jumps
 	if jumps>0 and Input.is_action_just_pressed("jump"):
 		jumps-=1
-		if not is_on_floor():
-			$jump_sfx.play()
+#		if not is_on_floor():
+#			$jump_sfx.play()
 		gravity_vector=Vector3(0,7,0)
 	input_direction = 10*input_direction.normalized().rotated(Vector3.UP,$camera.rotation.y)
 

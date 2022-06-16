@@ -1,0 +1,7 @@
+landing
+run
+first terminal
+elevator up
+server room
+second terminal
+elevator down

@@ -2,21 +2,40 @@ extends TextEdit
 
 signal set_turret_status(active)
 
+var file_system={"process":0,"devices":0,"hello.txt":"this is an example file that says hello world!"}
+
 func command(cmd):
-	if cmd == "help":
-		write("\nThis is a help line.")
-	elif cmd == "activate":
-		emit_signal("set_turret_status",true)
-		write("\nactivating turrets...")
-	elif cmd == "deactivate":
-		emit_signal("set_turret_status",false)
-		write("\ndeactivating turrets...")
-	elif cmd == "exit":
-		write("\nlogout")
-		get_node("../../").logout();
-	else:
-		$error_sfx.play()
-		write("\nCommand not found.")
+	write("\n")
+	var args=cmd.split(" ")
+
+	match args[0]:
+		"list":
+			for f in file_system.keys():
+				write(f+"\n")
+			return
+		"read":
+			if args[1] in file_system.keys():
+				write(file_system[args[1]])
+			else:
+				write("file not found.\n")
+			return
+		"help":
+			write("activate\ndeactivate\nexit")
+			return
+		"activate":
+			emit_signal("set_turret_status",true)
+			write("activating turrets...")
+			return
+		"deactivate":
+			emit_signal("set_turret_status",false)
+			write("deactivating turrets...")
+			return
+		"exit":
+			write("logout")
+			get_node("../../").logout();
+			return
+	$error_sfx.play()
+	write("Command not found.")
 
 var PS1 = "$ "
 func _input(event):
@@ -34,13 +53,13 @@ func _input(event):
 				get_tree().set_input_as_handled() #don't go further back then PS1
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	text=""
 	rect_position=get_viewport().size/2 - rect_size/2
 	write(PS1)
-	pass # Replace with function body.
+	pass
 
+#TODO handle pipes
 func write(s):
 	insert_text_at_cursor(s)
 

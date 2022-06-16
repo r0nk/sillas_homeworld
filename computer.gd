@@ -30,6 +30,7 @@ func logout():
 	$vp/terminal.visible=false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if not $ambience.playing:
+		$ambience.play()
+	pass
