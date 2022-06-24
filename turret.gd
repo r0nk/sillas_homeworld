@@ -19,11 +19,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not active:
-		$gun/laser.spot_range=0
-		$gun/laser/light.material.albedo_color=Color(0,1,0);
+		$gun/light.material.albedo_color=Color(0,1.4,0);
 		return
-	$gun/laser.spot_range=20
-	$gun/laser/light.material.albedo_color=Color(1,0,0);
+	$gun/light.material.albedo_color=Color(2.0,0,0);
 	time_passed+=delta;
 	look_at(get_node("../player").translation ,Vector3.UP)
 	if($gun/raycast.is_colliding()):

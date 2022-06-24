@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/dev_grey.png" type="Texture" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://turret.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main.gd" type="Script" id=10]
 [ext_resource path="res://textures/png/TECH_1A.png" type="Texture" id=11]
-[ext_resource path="res://elevator.gd" type="Script" id=15]
+[ext_resource path="res://gravgate.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Black Hole.tscn" type="PackedScene" id=16]
 [ext_resource path="res://door.gd" type="Script" id=17]
 
@@ -294,7 +294,15 @@ albedo_texture = ExtResource( 2 )
 uv1_triplanar = true
 
 [sub_resource type="ViewportTexture" id=42]
-viewport_path = NodePath("map/blocks/Sprite3D/Viewport")
+viewport_path = NodePath("gravgate/Sprite3D/Viewport")
+
+[sub_resource type="SpatialMaterial" id=45]
+flags_unshaded = true
+albedo_color = Color( 1, 0.913725, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=46]
+flags_unshaded = true
+albedo_color = Color( 0.756863, 0, 1, 1 )
 
 [sub_resource type="BoxShape" id=34]
 extents = Vector3( 1.91293, 1, 1.37556 )
@@ -359,7 +367,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71797, -0.314429, -14.467 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.3725, 32.9601, -3.75569 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0367, 3.94444, 0.403055 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58825, 1, 4.3 )
 
 [node name="map" type="Spatial" parent="."]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 3.91314, 4.27578 )
@@ -430,10 +438,10 @@ depth = 0.352584
 material = SubResource( 41 )
 
 [node name="CSGBox5" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14017, -0.410601, -3.98643 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.86301, -0.604393, -3.94648 )
 use_collision = true
 width = 1.6241
-height = 1.50234
+height = 10.4441
 depth = 0.352584
 material = SubResource( 41 )
 
@@ -446,7 +454,7 @@ depth = 0.352584
 material = SubResource( 41 )
 
 [node name="CSGBox8" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5697, 5.11724, -4.80459 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5697, 5.29959, -4.80459 )
 use_collision = true
 width = 15.8675
 height = 1.50234
@@ -454,11 +462,20 @@ depth = 0.352584
 material = SubResource( 41 )
 
 [node name="CSGBox9" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.8749, 5.28916, 1.90027 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.8749, 5.28916, -3.65193 )
 use_collision = true
-width = 7.31628
+width = 18.0976
 height = 1.50234
 depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox23" type="CSGBox" parent="map/blocks/CSGBox9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.655562, 0, 0 )
+operation = 2
+use_collision = true
+width = 1.98181
+height = 1.50234
+depth = 0.554231
 material = SubResource( 41 )
 
 [node name="CSGBox11" type="CSGBox" parent="map/blocks"]
@@ -471,11 +488,45 @@ depth = 0.352584
 material = SubResource( 41 )
 
 [node name="CSGBox13" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2485, -39.6813, -5.98527 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2485, -40.8284, 0.301552 )
 snap = 0.02
 use_collision = true
-width = 12.9749
-height = 7.88089
+width = 25.546
+height = 8.96785
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox" type="CSGBox" parent="map/blocks/CSGBox13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04476, -2.79126, 0 )
+operation = 2
+width = 0.742635
+height = 0.958562
+depth = 0.749446
+
+[node name="CSGBox15" type="CSGBox" parent="map/blocks"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.3995, -40.8284, 0.301552 )
+snap = 0.02
+use_collision = true
+width = 25.546
+height = 8.96785
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox17" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5134, -40.8284, 0.301552 )
+snap = 0.02
+use_collision = true
+width = 9.56616
+height = 8.96785
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox18" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8967, -40.8284, -4.68321 )
+snap = 0.02
+use_collision = true
+width = 1.55664
+height = 8.96785
 depth = 0.352584
 material = SubResource( 41 )
 
@@ -484,6 +535,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8244, 5.25146, -1.62019 )
 use_collision = true
 width = 5.6748
 height = 1.50234
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox19" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3276, 5.25146, -4.44833 )
+use_collision = true
+width = 7.3492
+height = 1.50234
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox21" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.693, -22.1266, -12.5691 )
+use_collision = true
+width = 9.75043
+height = 57.8039
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox22" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5858, -22.1266, 5.30559 )
+use_collision = true
+width = 9.46879
+height = 57.8039
 depth = 0.352584
 material = SubResource( 41 )
 
@@ -518,12 +593,28 @@ height = 0.329563
 depth = 18.1097
 material = SubResource( 40 )
 
+[node name="CSGBox20" type="CSGBox" parent="map/blocks"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13.3701, 6.18251, -3.73377 )
+use_collision = true
+width = 9.08743
+height = 0.329563
+depth = 18.1097
+material = SubResource( 40 )
+
 [node name="CSGBox12" type="CSGBox" parent="map/blocks"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.6277, -44.2698, -8.31151 )
 use_collision = true
 width = 9.08743
 height = 0.329563
 depth = 18.1097
+material = SubResource( 40 )
+
+[node name="CSGBox16" type="CSGBox" parent="map/blocks"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -27.882, -42.9182, 5.80907 )
+use_collision = true
+width = 1.48848
+height = 0.329563
+depth = 23.3793
 material = SubResource( 40 )
 
 [node name="CSGBox14" type="CSGBox" parent="map/blocks"]
@@ -554,22 +645,19 @@ autowrap = true
 [node name="city" parent="map/blocks" instance=ExtResource( 6 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -56.8051, -47.4676, 0 )
 
+[node name="CSGBox23" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0631, 11.5795, 0 )
+material = SubResource( 45 )
+
+[node name="CSGBox24" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0631, -10.9101, 0 )
+material = SubResource( 46 )
+
 [node name="MiniGun" parent="." groups=["device"] instance=ExtResource( 9 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26.3589, -0.326175, -16.7134 )
 
 [node name="MiniGun2" parent="." groups=["device"] instance=ExtResource( 9 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26.3589, -0.326175, -21.9646 )
-
-[node name="elevator" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9047, 31.7261, -19.4377 )
-script = ExtResource( 15 )
-
-[node name="cs" type="CollisionShape" parent="elevator"]
-transform = Transform( 2, 0, 0, 0, 0.3, 0, 0, 0, 3, 0, -0.461108, -0.400757 )
-shape = SubResource( 34 )
-
-[node name="CSGBox" type="CSGBox" parent="elevator/cs"]
-material_override = SubResource( 35 )
 
 [node name="doorway" type="KinematicBody" parent="." groups=["device"]]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -68.505, 34.3828, -4.30902 )
@@ -587,3 +675,9 @@ depth = 2.86748
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 39 )
+
+[node name="gravgate" parent="." instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.14313, 9.36794e-08, -21.311 )
+
+[node name="gravgate2" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55.1694, 35.7763, -18.4772 )

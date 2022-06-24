@@ -2,7 +2,8 @@ extends KinematicBody
 
 var input_direction = Vector3()
 var velocity = Vector3(0,0.001,0)
-var gravity_vector = Vector3()
+var accel = Vector3(0,0,0)
+var gravity_vector = Vector3(0,-98,0)
 var health = 100
 #probably a better way of doing this but yolo lmao
 var is_player = true
@@ -46,14 +47,16 @@ func process_input(delta):
 	process_interactibles()
 	input_direction = Vector3()
 
+	var forward=Vector3(0,0,-1)
+
 	if Input.is_action_pressed("movement_forward"):
-		input_direction.z-=1
+		input_direction+=forward
 	if Input.is_action_pressed("movement_backward"):
-		input_direction.z+=1
+		input_direction+=-forward
 	if Input.is_action_pressed("movement_left"):
-		input_direction.x-=1
+		input_direction+=forward.rotated(-gravity_vector.normalized(),(3.14/2))
 	if Input.is_action_pressed("movement_right"):
-		input_direction.x+=1
+		input_direction+=-forward.rotated(-gravity_vector.normalized(),(3.14/2))
 
 	if(input_direction.length() > 0) and is_on_floor():
 		if not $footsteps.playing:
@@ -67,23 +70,42 @@ func process_input(delta):
 		jumps-=1
 #		if not is_on_floor():
 #			$jump_sfx.play()
-		gravity_vector=Vector3(0,7,0)
-	input_direction = 10*input_direction.normalized().rotated(Vector3.UP,$camera.rotation.y)
+		velocity=-gravity_vector.normalized()*5
+	input_direction = 10*input_direction.normalized().rotated(-gravity_vector.normalized(),$camera.rotation.y)
 
 func dialogic_event_handler(e):
 	if e == "unlock_player":
 		move_locked=false
+
+#http://kidscancode.org/godot_recipes/3d/3d_align_surface/
+#I'm a kid okay
+func align_with_y(xform,new_y):
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dead:
 		return
 	process_input(delta)
-	move_and_slide(input_direction+velocity+gravity_vector,Vector3.UP)
+	accel += gravity_vector*delta
+	velocity += accel*delta
+	move_and_slide(input_direction+velocity,-gravity_vector.normalized())
 #	move_and_slide(input_direction+velocity,Vector3.UP)
+
+	global_transform=global_transform.interpolate_with(align_with_y(global_transform,-gravity_vector.normalized()),0.1)
+
+	#is_on_floor doesn't work, we gotta roll our own for wibbly wobbly gravity
+
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+
 	if is_on_floor():
-		gravity_vector=-get_floor_normal()*10
+#		accel=-get_floor_normal()*10
+		accel*=0
 		velocity*=1-(delta)
 	else:
-		gravity_vector.y-=delta*20
 		velocity*=1-(delta*0.5)
