@@ -7,8 +7,8 @@ extends KinematicBody
 
 var d_x = 1
 
-var point_1 = Vector3(-75.531,34.7,-4.3)
-var point_2 = Vector3(-68.5,34.7,-4.3)
+var point_1 = Vector3(-112,31.5,-12)
+var point_2 = Vector3(-112,-260,-12)
 
 var wait_timer = 2
 var speed=5

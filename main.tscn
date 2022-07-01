@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/dev_grey.png" type="Texture" id=2]
@@ -8,14 +8,67 @@
 [ext_resource path="res://models/skyscraper_pack/models/city.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/Silla.png" type="Texture" id=7]
 [ext_resource path="res://Silla.gd" type="Script" id=8]
-[ext_resource path="res://turret.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/space_marine.png" type="Texture" id=9]
 [ext_resource path="res://main.gd" type="Script" id=10]
 [ext_resource path="res://textures/png/TECH_1A.png" type="Texture" id=11]
 [ext_resource path="res://gravgate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/flames/burning_loop_1.png" type="Texture" id=13]
+[ext_resource path="res://elevator.gd" type="Script" id=14]
 [ext_resource path="res://Black Hole.tscn" type="PackedScene" id=16]
 [ext_resource path="res://door.gd" type="Script" id=17]
 
 [sub_resource type="CylinderShape" id=1]
+
+[sub_resource type="BoxShape" id=62]
+extents = Vector3( 5, 3, 10 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 24, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 48, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 72, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 96, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=59]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 120, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 144, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 19
+atlas = ExtResource( 13 )
+region = Rect2( 168, 0, 24, 32 )
+
+[sub_resource type="SpriteFrames" id=53]
+animations = [ {
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="VisualShaderNodeTexture" id=30]
 output_port_for_preview = 0
@@ -280,32 +333,30 @@ flags_world_triplanar = true
 albedo_texture = ExtResource( 2 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=44]
-albedo_texture = ExtResource( 11 )
-
 [sub_resource type="SpatialMaterial" id=41]
 flags_world_triplanar = true
 albedo_texture = ExtResource( 4 )
 uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=44]
+albedo_texture = ExtResource( 11 )
 
 [sub_resource type="SpatialMaterial" id=40]
 flags_world_triplanar = true
 albedo_texture = ExtResource( 2 )
 uv1_triplanar = true
 
+[sub_resource type="BoxShape" id=63]
+
+[sub_resource type="SpatialMaterial" id=64]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
+
 [sub_resource type="ViewportTexture" id=42]
 viewport_path = NodePath("gravgate/Sprite3D/Viewport")
 
-[sub_resource type="SpatialMaterial" id=45]
-flags_unshaded = true
-albedo_color = Color( 1, 0.913725, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=46]
-flags_unshaded = true
-albedo_color = Color( 0.756863, 0, 1, 1 )
-
 [sub_resource type="BoxShape" id=34]
-extents = Vector3( 1.91293, 1, 1.37556 )
+extents = Vector3( 2, 1, 2 )
 
 [sub_resource type="SpatialMaterial" id=35]
 albedo_color = Color( 0, 0.960784, 1, 1 )
@@ -360,6 +411,69 @@ texture = ExtResource( 7 )
 visible = false
 timeline = "timeline-1636399137.json"
 
+[node name="marine" type="KinematicBody" parent="." groups=["interactibles"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2736, -0.315006, 6.07871 )
+
+[node name="CollisionShape" type="CollisionShape" parent="marine"]
+shape = SubResource( 1 )
+
+[node name="Sprite3D" type="Sprite3D" parent="marine/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120987, 0 )
+pixel_size = 0.008
+billboard = 2
+texture = ExtResource( 9 )
+
+[node name="dialog" parent="marine" instance=ExtResource( 5 )]
+visible = false
+timeline = "timeline-1636399137.json"
+
+[node name="flames" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4306, 35.1034, -26.1955 )
+
+[node name="CollisionShape" type="CollisionShape" parent="flames"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12749, 0, -8.2426 )
+shape = SubResource( 62 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="flames"]
+pixel_size = 0.2
+billboard = 2
+frames = SubResource( 53 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="flames"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4795, -0.927326, -2.33955 )
+modulate = Color( 1, 0.615686, 0.615686, 1 )
+pixel_size = 0.154
+billboard = 2
+frames = SubResource( 53 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="flames"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16584, -0.927326, -3.85633 )
+modulate = Color( 1, 0.854902, 0.623529, 1 )
+pixel_size = 0.193
+billboard = 2
+frames = SubResource( 53 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="flames"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25262, 1.28498, -11.3819 )
+modulate = Color( 1, 0.854902, 0.623529, 1 )
+pixel_size = 0.3
+billboard = 2
+frames = SubResource( 53 )
+frame = 2
+playing = true
+
+[node name="OmniLight" type="OmniLight" parent="flames"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.87545 )
+light_color = Color( 1, 0.584314, 0, 1 )
+light_energy = 5.0
+omni_range = 15.0
+
 [node name="computer" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71797, -0.314429, -14.467 )
 
@@ -367,7 +481,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71797, -0.314429, -14.467 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.3725, 32.9601, -3.75569 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58825, 1, 4.3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -122, -254, -12 )
 
 [node name="map" type="Spatial" parent="."]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 3.91314, 4.27578 )
@@ -412,6 +526,14 @@ radial_segments = 60
 rings = 10
 material = SubResource( 43 )
 
+[node name="CSGBox24" type="CSGBox" parent="map/CSGSphere2"]
+transform = Transform( -0.2, 0, 1.74846e-08, 0, 0.2, 0, -1.74846e-08, 0, -0.2, -0.0594738, -0.0821202, -6.00935 )
+use_collision = true
+width = 10.0
+height = 15.0
+depth = 0.352584
+material = SubResource( 41 )
+
 [node name="CSGSphere" type="CSGSphere" parent="map/CSGSphere2"]
 transform = Transform( 1, 0, 1.77636e-14, 0, 1, 0, -1.77636e-14, 0, 1, 0, 0, 0 )
 operation = 2
@@ -421,7 +543,7 @@ rings = 10
 material = SubResource( 43 )
 
 [node name="CSGBox" type="CSGBox" parent="map/CSGSphere2/CSGSphere"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0, -5.9758 )
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 2.98023e-08, 0, -5.9758 )
 width = 0.498418
 height = 0.503007
 depth = 0.347099
@@ -430,26 +552,34 @@ material = SubResource( 44 )
 [node name="blocks" type="Spatial" parent="map"]
 
 [node name="CSGBox2" type="CSGBox" parent="map/blocks"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98491, -0.410601, -3.1359 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.01203, -0.410601, -3.1359 )
 use_collision = true
-width = 5.89177
+width = 8.0
 height = 1.50234
 depth = 0.352584
 material = SubResource( 41 )
 
 [node name="CSGBox5" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.86301, -0.604393, -3.94648 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.18371, 0.606314, -3.94648 )
 use_collision = true
 width = 1.6241
-height = 10.4441
-depth = 0.352584
+height = 8.0
+depth = 5.0
 material = SubResource( 41 )
 
 [node name="CSGBox4" type="CSGBox" parent="map/blocks"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04802, -0.410601, -4.80459 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17679, -0.410601, -4.80459 )
 use_collision = true
-width = 7.7437
-height = 1.50234
+width = 9.0
+height = 15.0
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox23" type="CSGBox" parent="map/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.95733, -0.410601, 5.32564 )
+use_collision = true
+width = 10.0
+height = 15.0
 depth = 0.352584
 material = SubResource( 41 )
 
@@ -457,6 +587,14 @@ material = SubResource( 41 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5697, 5.29959, -4.80459 )
 use_collision = true
 width = 15.8675
+height = 1.50234
+depth = 0.352584
+material = SubResource( 41 )
+
+[node name="CSGBox24" type="CSGBox" parent="map/blocks"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.6451, 5.29959, -8.68333 )
+use_collision = true
+width = 8.0
 height = 1.50234
 depth = 0.352584
 material = SubResource( 41 )
@@ -479,12 +617,12 @@ depth = 0.554231
 material = SubResource( 41 )
 
 [node name="CSGBox11" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.8749, -20.0514, -5.86463 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.2328, -20.0514, -3.95589 )
 snap = 0.02
 use_collision = true
-width = 13.5589
+width = 18.0
 height = 48.8556
-depth = 0.352584
+depth = 10.0
 material = SubResource( 41 )
 
 [node name="CSGBox13" type="CSGBox" parent="map/blocks"]
@@ -563,22 +701,23 @@ depth = 0.352584
 material = SubResource( 41 )
 
 [node name="CSGBox" type="CSGBox" parent="map/blocks"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16739, -1.61759 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68495, -1.20171, -0.974519 )
 use_collision = true
+width = 10.0
 height = 0.329563
-depth = 5.99107
+depth = 12.0
 material = SubResource( 40 )
 
 [node name="CSGBox3" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.02349, -1.16739, -3.73377 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31779, 6.24415, -0.974519 )
 use_collision = true
-width = 1.76634
+width = 10.0
 height = 0.329563
-depth = 5.99107
+depth = 12.0
 material = SubResource( 40 )
 
 [node name="CSGBox6" type="CSGBox" parent="map/blocks"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.25058, 4.47903, -3.73929 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.25058, 4.47903, -3.9012 )
 use_collision = true
 width = 1.76634
 height = 0.329563
@@ -608,6 +747,24 @@ width = 9.08743
 height = 0.329563
 depth = 18.1097
 material = SubResource( 40 )
+
+[node name="exit_trigger" type="Area" parent="map/blocks"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -27.882, -44.2402, 13.2756 )
+
+[node name="CollisionShape" type="CollisionShape" parent="map/blocks/exit_trigger"]
+shape = SubResource( 63 )
+
+[node name="CSGBox" type="CSGBox" parent="map/blocks/exit_trigger"]
+height = 3.0
+material = SubResource( 64 )
+
+[node name="OmniLight" type="OmniLight" parent="map/blocks/exit_trigger"]
+transform = Transform( 0.166667, 0, -1.77636e-15, 0, 0.166667, 0, 1.77636e-15, 0, 0.166667, 0, 0, 0.862852 )
+light_color = Color( 0.341176, 0.341176, 0.341176, 1 )
+light_energy = 10.0
+light_negative = true
+omni_range = 10.0
+omni_attenuation = 1.41421
 
 [node name="CSGBox16" type="CSGBox" parent="map/blocks"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -27.882, -42.9182, 5.80907 )
@@ -645,22 +802,8 @@ autowrap = true
 [node name="city" parent="map/blocks" instance=ExtResource( 6 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -56.8051, -47.4676, 0 )
 
-[node name="CSGBox23" type="CSGBox" parent="map/blocks"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0631, 11.5795, 0 )
-material = SubResource( 45 )
-
-[node name="CSGBox24" type="CSGBox" parent="map/blocks"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0631, -10.9101, 0 )
-material = SubResource( 46 )
-
-[node name="MiniGun" parent="." groups=["device"] instance=ExtResource( 9 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26.3589, -0.326175, -16.7134 )
-
-[node name="MiniGun2" parent="." groups=["device"] instance=ExtResource( 9 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26.3589, -0.326175, -21.9646 )
-
 [node name="doorway" type="KinematicBody" parent="." groups=["device"]]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -68.505, 34.3828, -4.30902 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -76.1646, 34.3828, -4.30902 )
 script = ExtResource( 17 )
 
 [node name="cs" type="CollisionShape" parent="doorway"]
@@ -673,11 +816,25 @@ material_override = SubResource( 35 )
 width = 3.93469
 depth = 2.86748
 
+[node name="elevator" type="KinematicBody" parent="." groups=["device"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -112, -259.524, -12 )
+script = ExtResource( 14 )
+
+[node name="cs" type="CollisionShape" parent="elevator"]
+transform = Transform( 2, 0, 0, 0, 0.5, 0, 0, 0, 2, -0.17775, -0.732309, -1.23011 )
+shape = SubResource( 34 )
+
+[node name="CSGBox" type="CSGBox" parent="elevator/cs"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, -4.44089e-16, 1, 0, 0, 0 )
+material_override = SubResource( 35 )
+width = 4.0
+depth = 4.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 39 )
 
 [node name="gravgate" parent="." instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.14313, 9.36794e-08, -21.311 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -28.5069, 1.24608e-06, -20.1068 )
 
 [node name="gravgate2" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55.1694, 35.7763, -18.4772 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4883, 35.7763, -19.4487 )

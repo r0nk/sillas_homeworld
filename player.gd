@@ -42,10 +42,10 @@ func process_interactibles():
 		$camera/HUD/undercross.text=""
 
 func process_input(delta):
+	input_direction = Vector3()
 	if(move_locked):
 		return
 	process_interactibles()
-	input_direction = Vector3()
 
 	var forward=Vector3(0,0,-1)
 
@@ -96,9 +96,7 @@ func _process(delta):
 	move_and_slide(input_direction+velocity,-gravity_vector.normalized())
 #	move_and_slide(input_direction+velocity,Vector3.UP)
 
-	global_transform=global_transform.interpolate_with(align_with_y(global_transform,-gravity_vector.normalized()),0.1)
-
-	#is_on_floor doesn't work, we gotta roll our own for wibbly wobbly gravity
+	global_transform=global_transform.interpolate_with(align_with_y(global_transform,-gravity_vector.normalized()),0.3)
 
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/building_02.png-ca90ff7cbe96119c45f233ee8183fd38.s3tc.stex"
-path.etc2="res://.import/building_02.png-ca90ff7cbe96119c45f233ee8183fd38.etc2.stex"
+path.s3tc="res://.import/burning_loop_2.png-b6f525ef5f75dd526ede27ad9aaa1626.s3tc.stex"
+path.etc2="res://.import/burning_loop_2.png-b6f525ef5f75dd526ede27ad9aaa1626.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/skyscraper_pack/textures/building_02.png"
-dest_files=[ "res://.import/building_02.png-ca90ff7cbe96119c45f233ee8183fd38.s3tc.stex", "res://.import/building_02.png-ca90ff7cbe96119c45f233ee8183fd38.etc2.stex" ]
+source_file="res://sprites/flames/burning_loop_2.png"
+dest_files=[ "res://.import/burning_loop_2.png-b6f525ef5f75dd526ede27ad9aaa1626.s3tc.stex", "res://.import/burning_loop_2.png-b6f525ef5f75dd526ede27ad9aaa1626.etc2.stex" ]
 
 [params]
 
