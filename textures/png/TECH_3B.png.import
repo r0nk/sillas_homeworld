@@ -14,13 +14,13 @@ dest_files=[ "res://.import/TECH_3B.png-97ed4a0889d3bf8b671024b9dd5c3357.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

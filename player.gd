@@ -10,6 +10,8 @@ var is_player = true
 var dead = false
 var move_locked = false
 
+var shift_timer=0
+
 var jumps=0
 var extra_jumps=1
 var power=0
@@ -104,6 +106,6 @@ func _process(delta):
 	if is_on_floor():
 #		accel=-get_floor_normal()*10
 		accel*=0
-		velocity*=1-(delta)
+		velocity*=1-(delta*5)
 	else:
 		velocity*=1-(delta*0.5)
