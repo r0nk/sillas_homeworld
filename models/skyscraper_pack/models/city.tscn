@@ -54,6 +54,7 @@ albedo_texture = ExtResource( 6 )
 uv1_triplanar = true
 
 [node name="city" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.0648, 0 )
 
 [node name="building_011" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
@@ -160,3 +161,10 @@ material/0 = SubResource( 5 )
 width = 450.669
 depth = 565.78
 material = SubResource( 6 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78.6918, 1.40442, 22.7609 )
+operation = 2
+width = 40.0
+height = 40.0
+depth = 60.0

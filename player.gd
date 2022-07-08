@@ -65,6 +65,7 @@ func process_input(delta):
 			$footsteps.play()
 	else:
 		$footsteps.stop()
+		input_direction*=0
 
 	if is_on_floor():
 		jumps=extra_jumps
@@ -72,7 +73,7 @@ func process_input(delta):
 		jumps-=1
 #		if not is_on_floor():
 #			$jump_sfx.play()
-		velocity=-gravity_vector.normalized()*5
+		velocity-=gravity_vector.normalized()*15
 	input_direction = 10*input_direction.normalized().rotated(-gravity_vector.normalized(),$camera.rotation.y)
 
 func dialogic_event_handler(e):
@@ -94,11 +95,11 @@ func _process(delta):
 		return
 	process_input(delta)
 	accel += gravity_vector*delta
-	velocity += accel*delta
-	move_and_slide(input_direction+velocity,-gravity_vector.normalized())
+	velocity += (input_direction*0.3)+accel*delta
+	move_and_slide(velocity,-gravity_vector.normalized())
 #	move_and_slide(input_direction+velocity,Vector3.UP)
 
-	global_transform=global_transform.interpolate_with(align_with_y(global_transform,-gravity_vector.normalized()),0.3)
+	global_transform=global_transform.interpolate_with(align_with_y(global_transform,-gravity_vector.normalized()),0.15)
 
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
@@ -106,6 +107,6 @@ func _process(delta):
 	if is_on_floor():
 #		accel=-get_floor_normal()*10
 		accel*=0
-		velocity*=1-(delta*5)
+		velocity*=1-(delta*10)
 	else:
 		velocity*=1-(delta*0.5)
