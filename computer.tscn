@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://computer.gd" type="Script" id=2]
 [ext_resource path="res://terminal.gd" type="Script" id=3]
-[ext_resource path="res://sfx/CSFX-2_Menu-AccessDenied_35.wav" type="AudioStream" id=4]
-[ext_resource path="res://sfx/EMF_051_Smartphone.wav" type="AudioStream" id=5]
-[ext_resource path="res://sfx/logoff.wav" type="AudioStream" id=6]
-[ext_resource path="res://sfx/CSFX-2_Mechanics_45.wav" type="AudioStream" id=7]
 [ext_resource path="res://models/server_terminal.gltf" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=2]
@@ -44,7 +40,6 @@ __meta__ = {
 }
 
 [node name="error_sfx" type="AudioStreamPlayer" parent="vp/terminal"]
-stream = ExtResource( 4 )
 volume_db = -12.116
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -58,14 +53,11 @@ light_color = Color( 0, 1, 0.203922, 1 )
 omni_range = 2.65894
 
 [node name="logon_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
 
 [node name="logoff_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
 
 [node name="ambience" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.872228, 0, 0.119204 )
-stream = ExtResource( 5 )
 unit_db = -10.0
 
 [node name="server_terminal" parent="." instance=ExtResource( 8 )]

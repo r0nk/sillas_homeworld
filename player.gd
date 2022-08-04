@@ -88,7 +88,6 @@ func align_with_y(xform,new_y):
 	xform.basis = xform.basis.orthonormalized()
 	return xform
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dead:

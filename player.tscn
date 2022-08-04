@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://sfx/S23_SFX_Footsteps_Metal_Boots_Loop_Jogging.wav" type="AudioStream" id=2]
+[ext_resource path="res://status.gd" type="Script" id=2]
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -46,6 +46,7 @@ margin_right = 932.0
 margin_bottom = 678.0
 custom_colors/default_color = Color( 1, 1, 1, 0.392157 )
 custom_fonts/normal_font = SubResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,6 +57,8 @@ margin_top = 574.0
 margin_right = 1188.0
 margin_bottom = 797.0
 custom_fonts/normal_font = SubResource( 2 )
+text = "
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,5 +72,4 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.1
 shape = SubResource( 3 )
 
 [node name="footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
 volume_db = -10.0
