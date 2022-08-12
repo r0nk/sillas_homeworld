@@ -1,0 +1,45 @@
+{
+	"events": [
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "God dammit, WOULD YOU KINDLY STOP FUCKING WITH THE GRAVITY?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Who are you yelling at?"
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The gravity fuckers. How do we get out of this?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "More button mashing. "
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hopefully there's not some self destruct sequence I'm starting here."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I would've pressed it on the way out."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1660259930.json",
+		"name": "room turning"
+	}
+}

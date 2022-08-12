@@ -1,0 +1,26 @@
+engine work:
+	r0sh
+		* challange one
+		* challange two
+		* challange three
+
+assets:
+	dialogues:
+		*starting gun grab
+		* "we got time"
+		* "oh shit the room is turning"
+		* "where the hell are we silla?"
+		* "welcome to home sweet home"
+		* "can you hear me now?"
+
+ 	models:
+		* silla model & anim
+		* enemy model & anim
+		* env art
+		* elevator
+		* model train
+
+	sfx:
+		* walking
+		* hacking
+		* fire

@@ -1,0 +1,71 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That should hold them off for a while."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "They shut off the path, figure out a way to turn it back on."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "They shuf off the path, figure out a way to turn it back on."
+		},
+		{
+			"choice": "On it.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "What? How?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There's a computer over there. Just mash some buttons or something, you're clever...ish."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"emit_signal": "unlock_player",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1660259923.json",
+		"name": "we got time"
+	}
+}

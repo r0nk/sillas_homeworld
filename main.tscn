@@ -6,7 +6,7 @@
 [ext_resource path="res://textures/dev_orange.png" type="Texture" id=4]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://models/skyscraper_pack/models/city.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sprites/Silla.png" type="Texture" id=7]
+[ext_resource path="res://sprites/silla.png" type="Texture" id=7]
 [ext_resource path="res://Silla.gd" type="Script" id=8]
 [ext_resource path="res://sprites/space_marine.png" type="Texture" id=9]
 [ext_resource path="res://main.gd" type="Script" id=10]
@@ -22,7 +22,7 @@
 [ext_resource path="res://addons/qodot/game_definitions/fgd/point_classes/light.gd" type="Script" id=20]
 [ext_resource path="res://textures/png/LIGHT_1C.png" type="Texture" id=21]
 [ext_resource path="res://textures/png/FLOOR_2A.png" type="Texture" id=22]
-[ext_resource path="res://icon.png" type="Texture" id=23]
+[ext_resource path="res://textures/underground_sci_fi_city_skyline_.png" type="Texture" id=23]
 [ext_resource path="res://textures/png/LIGHT_1A.png" type="Texture" id=24]
 [ext_resource path="res://textures/png/glass.png" type="Texture" id=25]
 [ext_resource path="res://textures/png/TECH_5B.png" type="Texture" id=26]
@@ -180,7 +180,7 @@ input_name = "uv"
 [sub_resource type="VisualShader" id=32]
 resource_local_to_scene = true
 code = "shader_type spatial;
-render_mode depth_draw_always, cull_disabled, specular_schlick_ggx, ambient_light_disabled;
+render_mode depth_draw_always, cull_disabled, specular_schlick_ggx, async_visible, ambient_light_disabled;
 
 
 
@@ -379,18 +379,16 @@ albedo_texture = ExtResource( 25 )
 panorama = ExtResource( 23 )
 
 [sub_resource type="Environment" id=39]
-background_mode = 3
+background_mode = 2
 background_sky = SubResource( 132 )
-background_color = Color( 0.615686, 0.615686, 0.615686, 1 )
+background_sky_orientation = Basis( 1, 0, 0, 0, 0.98, 0, 0, 0, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.1
-ambient_light_sky_contribution = 0.05
 fog_enabled = true
-fog_color = Color( 0.615686, 0.615686, 0.615686, 1 )
+fog_color = Color( 0.431373, 0.513726, 0.847059, 1 )
 fog_sun_color = Color( 0, 0, 0, 1 )
 fog_depth_begin = 1.0
 fog_depth_end = 1000.0
-fog_depth_curve = 2.54912
+fog_depth_curve = 2.14355
 glow_enabled = true
 glow_intensity = 1.0
 glow_strength = 0.8
@@ -926,7 +924,7 @@ shape = SubResource( 62 )
 pixel_size = 0.2
 billboard = 2
 frames = SubResource( 53 )
-frame = 6
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="flames"]
@@ -935,7 +933,7 @@ modulate = Color( 1, 0.615686, 0.615686, 1 )
 pixel_size = 0.154
 billboard = 2
 frames = SubResource( 53 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="flames"]
@@ -944,7 +942,7 @@ modulate = Color( 1, 0.854902, 0.623529, 1 )
 pixel_size = 0.193
 billboard = 2
 frames = SubResource( 53 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="flames"]
@@ -953,7 +951,7 @@ modulate = Color( 1, 0.854902, 0.623529, 1 )
 pixel_size = 0.3
 billboard = 2
 frames = SubResource( 53 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="OmniLight" type="OmniLight" parent="flames"]
@@ -973,7 +971,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -134.76
 transform = Transform( 1.31134e-07, 1, 3.82137e-15, -4.37114e-08, 1.91069e-15, 1, 1, -1.31134e-07, 4.37114e-08, -76.9915, 37.9384, -33.8468 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -87.5, -269, 77 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.4451, 37.6448, -40.9088 )
 
 [node name="map" type="Spatial" parent="."]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 3.91314, 4.27578 )
@@ -1195,24 +1193,6 @@ set_owner_batch_size = 16
 
 [node name="entity_0_mesh_instance" type="MeshInstance" parent="QodotMap/entity_0_worldspawn"]
 mesh = SubResource( 151 )
-material/0 = null
-material/1 = null
-material/2 = null
-material/3 = null
-material/4 = null
-material/5 = null
-material/6 = null
-material/7 = null
-material/8 = null
-material/9 = null
-material/10 = null
-material/11 = null
-material/12 = null
-material/13 = null
-material/14 = null
-material/15 = null
-material/16 = null
-material/17 = null
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
 shape = SubResource( 152 )

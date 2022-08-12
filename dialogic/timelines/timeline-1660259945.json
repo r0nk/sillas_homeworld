@@ -1,0 +1,232 @@
+{
+	"events": [
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Here we are, home sweet home."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "So I have... questions. Several Questions."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Like?"
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Where are we? Who were those guys? Why are we here? How do I shoot the cool space gun? Where are the restrooms?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "You get one answer. Pick a question."
+		},
+		{
+			"choice": "Where are we?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's called Caelum. It's a space station, as you might have guessed. This is where I'm from."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And this room, well its where I used to run to when I couldn't take it any more."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Couldn't take what?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh you'll meet him, don't worry. "
+		},
+		{
+			"choice": "Who are those guys and why are they after us?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "They wouldn't let me leave. Honestly you probably have a better understanding of what happened then they do right now."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "How long have they been hostile?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Just since they tried to stop me. In this timeframe, it's probably been about an hour."
+		},
+		{
+			"choice": "Why did we come here?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "... I'm... I'm here to find my mom. "
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh. Okay."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There is your answer. Now did you bring the sleeping bags?"
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah."
+		},
+		{
+			"emit_signal": "Sleeping_bags",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I never learned what that thing is, I guess now is as good a time as any."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's a container."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It holds the person I am supposed to be."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The reason I left this place. They were trying to, well, fix me."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Fix you? How exactly?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "They put me into this machine. They said I was too angry. That I broke too many rules."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The machine can change people. Turn them into who they are supposed to be. More obedient. "
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "More efficent."
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This little box, it holds the mold of who I am supposed to be."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Why did you keep it all this time?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "..."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Right well, should one of us stand guard?"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "No, if they wanted us dead they would've caught up by now. They probably know where we are, waiting us out most likely."
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We've slept through worse then. Good night. "
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's so strange to be back here."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1660259945.json",
+		"name": "home sweet home"
+	}
+}

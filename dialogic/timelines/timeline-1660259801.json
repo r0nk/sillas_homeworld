@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1660262212.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "How do I shoot this thing!?!"
+		},
+		{
+			"character": "character-1636399039.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Give it here!"
+		},
+		{
+			"emit_signal": "unlock_player",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1660259801.json",
+		"name": "gun_grab"
+	}
+}
