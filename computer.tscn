@@ -12,15 +12,17 @@ extents = Vector3( 0.660632, 1.3547, 1 )
 script = ExtResource( 2 )
 
 [node name="vp" type="CanvasLayer" parent="."]
+layer = 2
 follow_viewport_enable = true
 
 [node name="terminal" type="TextEdit" parent="vp"]
 visible = false
-margin_left = 507.411
-margin_top = 212.692
-margin_right = 1256.41
-margin_bottom = 732.692
+margin_left = 507.0
+margin_top = 213.0
+margin_right = 1298.0
+margin_bottom = 733.0
 rect_scale = Vector2( 1.11982, 1.06096 )
+mouse_filter = 2
 theme = ExtResource( 1 )
 custom_colors/selection_color = Color( 0.720703, 0.0675659, 0.0675659, 1 )
 custom_colors/caret_color = Color( 0.0313726, 1, 0, 1 )
@@ -29,6 +31,7 @@ custom_colors/completion_font_color = Color( 0.541176, 0.541176, 0.541176, 1 )
 custom_colors/background_color = Color( 0.753906, 0.103073, 0.103073, 1 )
 text = "This is a test line
 $ echo test > file"
+highlight_current_line = true
 fold_gutter = true
 context_menu_enabled = false
 caret_block_mode = true

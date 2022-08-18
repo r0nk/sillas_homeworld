@@ -1,18 +1,9 @@
 engine work:
 	r0sh
-		* challange one
-		* challange two
-		* challange three
-
+		* challenge one
+		* challenge two
+		* challenge three
 assets:
-	dialogues:
-		*starting gun grab
-		* "we got time"
-		* "oh shit the room is turning"
-		* "where the hell are we silla?"
-		* "welcome to home sweet home"
-		* "can you hear me now?"
-
  	models:
 		* silla model & anim
 		* enemy model & anim

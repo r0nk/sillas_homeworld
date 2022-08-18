@@ -8,34 +8,15 @@ func command(cmd):
 	write("\n")
 	var args=cmd.split(" ")
 
-	match args[0]:
-		"list":
-			for f in file_system.keys():
-				write(f+"\n")
-			return
-		"read":
-			if args[1] in file_system.keys():
-				write(file_system[args[1]])
+	match args[0].to_lower():
+		"yuo": # alien for 'toggle'
+			if(args.size()>1):
+				write("dawext czyz: "+args[1]) #"toggling gate %s"
 			else:
-				write("file not found.\n")
-			return
-		"help":
-			write("activate\ndeactivate\nexit")
-			return
-		"activate":
-			emit_signal("set_turret_status",true)
-			write("activating turrets...")
-			return
-		"deactivate":
-			emit_signal("set_turret_status",false)
-			write("deactivating turrets...")
-			return
-		"exit":
-			write("logout")
-			get_node("../../").logout();
+				write("ufzo tjoju fli ") #"error, insufficent arguemnts"
 			return
 	$error_sfx.play()
-	write("Command not found.")
+	write("ufzo cle zeq") #"error, no command"
 
 var PS1 = "$ "
 func _input(event):
@@ -51,7 +32,8 @@ func _input(event):
 		if event.pressed and event.scancode == KEY_BACKSPACE:
 			if (get_line(cursor_get_line()).length() <= PS1.length()):
 				get_tree().set_input_as_handled() #don't go further back then PS1
-
+		if event.pressed and event.scancode == KEY_ESCAPE:
+			get_node("../../").logout();
 
 func _ready():
 	text=""
